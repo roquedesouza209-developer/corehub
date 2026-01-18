@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { categories } from "@/data/categories";
 
 export default function CategoryGrid() {
@@ -9,15 +10,16 @@ export default function CategoryGrid() {
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
         {categories.map((category) => (
-          <div
+          <Link
             key={category.name}
-            className="bg-white/5 hover:bg-white/10 transition rounded-xl p-6 cursor-pointer border border-white/10"
+            href={`/categories/${category.name.toLowerCase().split(" ")[0]}`}
+            className="bg-white/5 hover:bg-white/10 transition rounded-xl p-6 cursor-pointer border border-white/10 block"
           >
             <div className="text-3xl mb-3">{category.emoji}</div>
             <div className="text-white font-medium">
               {category.name}
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
