@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import { apps } from "@/data/apps";
+import Image from "next/image";
 
 type Props = {
   params: { slug: string };
@@ -24,7 +25,15 @@ export default function AppPage({ params }: Props) {
       <Navbar />
 
       <main className="min-h-screen bg-black text-white pt-28 px-6 max-w-4xl mx-auto">
-        <div className="text-6xl mb-4">{app.logo}</div>
+        <div className="h-20 w-20 mb-6 relative">
+  <Image
+    src={app.logo}
+    alt={app.name}
+    fill
+    className="object-contain"
+  />
+</div>
+
 
         <h1 className="text-4xl font-bold mb-2">{app.name}</h1>
 
